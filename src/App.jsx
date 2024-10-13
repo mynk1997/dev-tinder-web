@@ -1,7 +1,21 @@
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Body from "./components/Body";
+import Login from "./components/Login";
+import Profile from "./components/Profile";
+
 function App() {
   return (
     <>
-      <h1>Hello World</h1>
+      <BrowserRouter basename="/">
+        <Routes>
+          <Route path="/" element={<div><Body/></div>}>
+            <Route path="/login" element={<Login/>}></Route>
+            <Route path="/profile" element={<Profile/>}></Route>
+
+          </Route>
+          
+        </Routes>
+      </BrowserRouter>
     </>
   );
 }
