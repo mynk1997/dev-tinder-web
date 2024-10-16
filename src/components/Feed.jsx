@@ -4,17 +4,20 @@ import axios from "axios";
 import { BASE_URL } from "../utils/constants";
 import { useEffect } from "react";
 import UserCard from "./UserCard";
+import { useNavigate } from "react-router-dom";
 
 const Feed = () => {
   const feed = useSelector((store) => store.feed);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const getFeed = async () => {
+    if (feed) return;
     try {
       const res = await axios.get(BASE_URL + "/feed", {
         withCredentials: true,
       });
-      dispatch(addFeed(res.data));
+      dispatch(addFeed(res?.data?.data));
     } catch (error) {
       console.log(error);
     }
@@ -23,7 +26,9 @@ const Feed = () => {
     getFeed();
   }, []);
 
-  if (!feed) return;
+  if (!feed) {
+    return navigate("/login");
+  };
   if (feed.length === 0) {
     return <h1>No new users found</h1>;
   }

@@ -1,6 +1,5 @@
 import axios from "axios";
 import { BASE_URL } from "../utils/constants";
-import { useState } from "react";
 import { removeUser } from "../utils/userSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
@@ -59,7 +58,7 @@ const Navbar = () => {
                 <Link to="/requests">Requests</Link>
               </li>
               <li>
-                <a onClick={handleLogout}>Logout</a>
+                <Link onClick={handleLogout}>Logout</Link>
               </li>
             </ul>
           </div>

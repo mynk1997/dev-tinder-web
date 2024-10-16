@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 import axios from "axios";
 import { useDispatch } from "react-redux";
 import { BASE_URL } from "../utils/constants";
@@ -16,7 +15,7 @@ const UserCard = ({ user }) => {
         {},
         { withCredentials: true }
       );
-      dispatch(removeUserFromFeed(_id));
+      dispatch(removeUserFromFeed(userId));
     } catch (error) {
       console.log(error);
     }
